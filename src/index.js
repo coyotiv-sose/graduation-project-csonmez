@@ -99,3 +99,4 @@ console.log(`Captain1 role ise captain: ${captain1.role === 'captain'}`)
 console.log(`Team1 captain is captain1: ${captain1.team === team1}`)
 console.log(`Team1 and Team2 heve a match: ${team1.matches.some((match) => (match.homeTeam === team1 && match.awayTeam === team2) || (match.homeTeam === team2 && match.awayTeam === team1))}`)
 console.log(`Team1 and Team3 have a match: ${team1.matches.some((match) => (match.homeTeam === team1 && match.awayTeam === team3) || (match.homeTeam === team3 && match.awayTeam === team1))}`) // Expected: false
+console.log('Slack Notification Test')

@@ -16,6 +16,7 @@ class User {
   addTeamMember(user) {
     if (this.role !== 'captain') return 'Only captains can add team members.';
     this.team.users.push(user);
+    user.team = this.team
   }
 
   sendMatchInvitation(awayTeam, stadium, date) {
@@ -70,6 +71,7 @@ const player11 = new User('player11');
 const player12 = new User('player12');
 captain1.addTeamMember(player11);
 captain1.addTeamMember(player12);
+player12.leaveTeam()
 
 const captain2 = new User('captain2', 'captain');
 const team2 = captain2.createTeam('Team2');
@@ -91,7 +93,7 @@ captain1.sendMatchInvitation(team2, stadium, new Date());
 captain2.sendMatchInvitation(team3, stadium, new Date());
 
 // TESTS
-console.log(`Team1 has 3 players: ${team1.users.length === 3}`)
+console.log(`Team1 has 3 players: ${team1.users.length === 2}`)
 console.log(`Team2 has 3 players: ${team2.users.length === 3}`)
 console.log(`Team3 has 3 players: ${team3.users.length === 4}`)
 console.log(`Stadium has 2 matches: ${stadium.matches.length === 2}`)
@@ -99,4 +101,3 @@ console.log(`Captain1 role ise captain: ${captain1.role === 'captain'}`)
 console.log(`Team1 captain is captain1: ${captain1.team === team1}`)
 console.log(`Team1 and Team2 heve a match: ${team1.matches.some((match) => (match.homeTeam === team1 && match.awayTeam === team2) || (match.homeTeam === team2 && match.awayTeam === team1))}`)
 console.log(`Team1 and Team3 have a match: ${team1.matches.some((match) => (match.homeTeam === team1 && match.awayTeam === team3) || (match.homeTeam === team3 && match.awayTeam === team1))}`) // Expected: false
-console.log('Slack Notification Test')

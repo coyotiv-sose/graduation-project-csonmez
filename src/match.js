@@ -1,11 +1,9 @@
-const dayjs = require('dayjs')
-
 class Match {
-  constructor(homeTeam, awayTeam, stadium, date) {
+  constructor(homeTeam, awayTeam, stadium, time) {
     this.homeTeam = homeTeam;
     this.awayTeam = awayTeam;
     this.stadium = stadium;
-    this.date = dayjs(date).format('DD/MM/YYYY HH:mm');
+    this.time = time
   }
 }
 

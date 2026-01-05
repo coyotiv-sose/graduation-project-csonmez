@@ -1,3 +1,5 @@
+const dayjs = require('dayjs')
+
 class Stadium {
   matches = []
 
@@ -10,7 +12,7 @@ class Stadium {
     return this.matches.map((match) => `
         # ${match.homeTeam.name} - ${match.awayTeam.name}
         \t Stat: ${match.stadium.name} / ${match.stadium.location}
-        \t Tarih: ${match.date}
+        \t Tarih - Saat: ${dayjs(match.time).format('DD.MM.YYYY HH:mm')}
       `
     ).join('')
   }

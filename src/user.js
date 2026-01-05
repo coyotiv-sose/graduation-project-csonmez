@@ -22,9 +22,9 @@ class User {
     user.team = this.team
   }
 
-  sendMatchInvitation(awayTeam, stadium, date) {
+  sendMatchInvitation(awayTeam, stadium, time) {
     if (this.role !== 'captain') return 'Only captains can send match invitations.';
-    const match = new Match(this.team, awayTeam, stadium, date);
+    const match = new Match(this.team, awayTeam, stadium, time);
     stadium.matches.push(match)
     this.team.matches.push(match)
     awayTeam.matches.push(match)

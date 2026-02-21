@@ -1,6 +1,38 @@
-@startuml Person 
-class Person {
-  name: string
-  age: number
+@startuml NextMatch
+
+class User {
+  username: string
+  role: string
+  team: Team
+
+  createTeam(name: string): Team
+  addTeamMember(user: User): void
+  sendMatchInvitation(awayTeam: Team, stadium: Stadium, time: Date): Match
+  leaveTeam(): void
 }
+
+class Team {
+  name: string
+  users: [User]
+  matches: [Match]
+}
+
+class Stadium {
+  name: string
+  location: string
+  matches: [Match]
+}
+
+class Match {
+  homeTeam: Team
+  awayTeam: Team
+  stadium: Stadium
+  time: Date
+}
+
+User "1" --> "1" Team : plays for
+Team "1" --> "0..*" User : has members
+Team "1" --> "0..*" Match : participates in
+Stadium "1" --> "0..*" Match : hosts
+
 @enduml
